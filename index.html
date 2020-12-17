@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock,Paper and Scissors Game</title>
+    <style>
+        body {
+            font-size: 2em;
+            font-weight: 500;
+            font-family: 'Courgette', cursive;
+            text-align: center;
+            overflow: hidden;
+            background-color: burlywood;
+        }
+
+        section {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            z-index: -999;
+            background-color: burlywood;
+        }
+
+        .leaf {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .leaf div {
+            position: absolute;
+            display: block;
+        }
+
+        .leaf div:nth-child(1) {
+            left: 20%;
+            animation: fall 15s linear infinite;
+            animation-delay: -2s;
+
+        }
+
+        .leaf div:nth-child(2) {
+            left: 70%;
+            animation: fall 15s linear infinite;
+            animation-delay: -4s;
+        }
+
+        .leaf div:nth-child(3) {
+            left: 10%;
+            animation: fall 20s linear infinite;
+            animation-delay: -7s;
+
+        }
+
+        .leaf div:nth-child(4) {
+            left: 50%;
+            animation: fall 18s linear infinite;
+            animation-delay: -5s;
+        }
+
+        .leaf div:nth-child(5) {
+            left: 85%;
+            animation: fall 14s linear infinite;
+            animation-delay: -5s;
+        }
+
+        .leaf div:nth-child(6) {
+            left: 15%;
+            animation: fall 16s linear infinite;
+            animation-delay: -10s;
+        }
+
+        .leaf div:nth-child(7) {
+            left: 90%;
+            animation: fall 15s linear infinite;
+            animation-delay: -4s;
+        }
+
+        @keyframes fall {
+            0% {
+                opacity: 1;
+                top: -10%;
+                transform: translateX (20px) rotate(0deg);
+            }
+
+            20% {
+                opacity: 0.8;
+                transform: translateX (-20px) rotate(45deg);
+            }
+
+            40% {
+
+                transform: translateX (-20px) rotate(90deg);
+            }
+
+            60% {
+
+                transform: translateX (-20px) rotate(135deg);
+            }
+
+            80% {
+
+                transform: translateX (-20px) rotate(180deg);
+            }
+
+            100% {
+
+                top: 110%;
+                transform: translateX (-20px) rotate(225deg);
+            }
+        }
+
+        .leaf1 {
+            transform: rotateX(180deg);
+        }
+
+        h2 {
+            position: absolute;
+            top: 40%;
+            width: 100%;
+            font-family: 'Courgette', cursive;
+            font-size: 4em;
+            text-align: center;
+            transform: translate;
+            color: #fff;
+            transform: translateY (-50%);
+        }
+
+        label {
+            display: block;
+        }
+
+        select {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .computer {
+            display: none;
+        }
+
+        .main {
+            z-index: 9999;
+            background-color: white;
+            margin: auto;
+            width: 30%;
+            padding: 10px;
+            margin-top: 35px;
+            height: 80vh;
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: burlywood;
+        }
+
+        .main-border {
+            border: 3px burlywood dashed;
+            width: 90%;
+            height: 75vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #result {
+            color: saddlebrown;
+            margin-top: 0;
+            font-size: 1.5em;
+
+        }
+
+        #button {
+            background-color: saddlebrown;
+            border: none;
+            color: white;
+            padding: 10px;
+            border-radius: 7px;
+            font-size: 0.7em;
+            font-weight: 700;
+            font-family: 'Courgette', cursive;
+        }
+
+        #button:hover {
+            background-color: burlywood;
+            font-size: 0.8em;
+
+        }
+
+        select {
+            border: none;
+            font-weight: 600;
+            font-size: 0.6em;
+            font-family: 'Courgette', cursive;
+            text-align: center;
+        }
+
+        @media (max-width:560px) {
+            .main {
+                width: 50%;
+                font-size: 0.5em;
+                font-weight: 200;
+
+            }
+
+            #button {
+                padding: 5px;
+                font-size: 0.5em;
+                font-weight: 200;
+            }
+
+            select {
+                font-size: 0.5em;
+                font-weight: 200;
+            }
+
+            #result {
+                font-size: 0.9em;
+                font-weight: 200;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <!-- background -->
+    <section>
+
+
+        <div class="leaf">
+            <div> <img src="rock.png" height="75px" width="75px"></img></div>
+            <div><img src="paper.png" height="75px" width="75px"></img></div>
+            <div> <img src="ses.png" height="75px" width="75px"></img></div>
+            <div><img src="ses.png" height="75px" width="75px"></img>
+            </div>
+            <div> <img src="rock.png" height="75px" width="75px"></img></div>
+            <div> <img src="paper.png" height="75px" width="75px"></div>
+            <div><img src="ses.png" height="75px" width="75px"></div>
+
+        </div>
+
+        <div class="leaf leaf1">
+            <div> <img src="paper.png" height="75px" width="75px"></img></div>
+            <div><img src="ses.png" height="75px" width="75px"></img></div>
+            <div> <img src="rock.png" height="75px" width="75px"></img></div>
+            <div><img src="paper.png" height="75px" width="75px"></img>
+            </div>
+            <div> <img src="rock.png" height="75px" width="75px"></img></div>
+            <div> <img src="ses.png" height="75px" width="75px"></div>
+            <div><img src="paper.png" height="75px" width="75px"></div>
+
+        </div>
+
+    </section>
+
+    <!-- main -->
+    <div class="main">
+        <div class="main-border">
+            <label for="users-choice">your pick!</label>
+
+            <select name="users-choice" id="users-choice">
+                <option value="rock">rock</option>
+                <option value="paper">paper</option>
+                <option value="scissors">scissors</option>
+            </select>
+            <input type="button" value="Start" id="button">
+            <div class="computer">
+                <label for="computer-choice">Computer's pick!</label>
+                <select name="computer-choice" id="computer-choice">
+                    <option value="computer-choice-input" id="computer-choice-input"></option>
+                </select>
+            </div>
+            <h1 id="result"></h1>
+        </div>
+    </div>
+
+    <script>
+        //submit button 
+        const button = document.getElementById("button");
+        //random function
+        function randomPick() {
+            let random = Math.floor(Math.random() * Math.floor(3));
+            let arr = ["rock", "paper", "scissors"];
+            let computer = arr[random];
+            document.getElementById("computer-choice-input").innerText = computer;
+            return computer;
+
+        }
+        //Game function
+        function randomPlayGame(user, computer) {
+            if (user === computer)
+                return "tie";
+            else if ((user == 'rock') && (computer == 'paper'))
+                return "you lose :(";
+            else if ((user == 'paper') && (computer == 'rock'))
+                return "you win :)";
+            else if ((user == 'rock') && (computer == 'scissors'))
+                return "you win :)";
+            else if ((user == 'scissors') && (computer == 'rock'))
+                return "you lose :(";
+            else if ((user == 'scissors') && (computer == 'paper'))
+                return "you win :)";
+            else if ((user == 'paper') && (computer == 'scissors'))
+                return "you lose :(";
+        }
+        console.log(randomPlayGame('rock'))
+        // event listener
+        button.addEventListener("click", function (e) {
+            e.preventDefault();
+            document.querySelector(".computer").style.display = 'block';
+            document.querySelector("#button").style.display = 'none';
+            document.getElementById("result").innerText = randomPlayGame(document.getElementById("users-choice").value, randomPick());
+        })
+    </script>
+</body>
+
+</html>
