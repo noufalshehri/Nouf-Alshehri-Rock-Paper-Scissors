@@ -157,6 +157,7 @@
             justify-content: center;
             align-items: center;
             color: burlywood;
+
         }
 
         .main-border {
@@ -169,7 +170,46 @@
             align-items: center;
         }
 
+        .two-players {
+            z-index: 9999;
+            background-color: white;
+            margin: auto;
+            width: 30%;
+            padding: 10px;
+            margin-top: 35px;
+            height: 80vh;
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: burlywood;
+        }
+
+        .type {
+            z-index: 9999;
+            background-color: white;
+            margin: auto;
+            width: 30%;
+            padding: 10px;
+            margin-top: 35px;
+            height: 80vh;
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: burlywood;
+        }
+
         #result {
+            color: saddlebrown;
+            margin-top: 0;
+            font-size: 1.5em;
+
+        }
+
+        #two-result {
             color: saddlebrown;
             margin-top: 0;
             font-size: 1.5em;
@@ -188,6 +228,82 @@
         }
 
         #button:hover {
+            background-color: burlywood;
+            font-size: 0.8em;
+
+        }
+
+        #two-submit {
+            background-color: saddlebrown;
+            border: none;
+            color: white;
+            padding: 10px;
+            border-radius: 7px;
+            font-size: 0.7em;
+            font-weight: 700;
+            font-family: 'Courgette', cursive;
+            width: 70px;
+            text-align: center;
+        }
+
+        #two-submit:hover {
+            background-color: burlywood;
+            font-size: 0.8em;
+
+        }
+
+        #one-button,
+        #two-button {
+            background-color: saddlebrown;
+            border: none;
+            color: white;
+            padding: 10px;
+            border-radius: 7px;
+            font-size: 0.7em;
+            font-weight: 700;
+            font-family: 'Courgette', cursive;
+            margin: 10px;
+            text-align: center;
+        }
+
+        #one-button:hover,
+        #two-button:hover {
+            background-color: burlywood;
+            font-size: 0.8em;
+
+        }
+
+        #restart {
+            background-color: saddlebrown;
+            border: none;
+            color: white;
+            padding: 10px;
+            border-radius: 7px;
+            font-size: 0.7em;
+            font-weight: 700;
+            font-family: 'Courgette', cursive;
+            display: none;
+        }
+
+        #restart:hover {
+            background-color: burlywood;
+            font-size: 0.8em;
+
+        }
+
+        #two-restart {
+            background-color: saddlebrown;
+            border: none;
+            color: white;
+            padding: 10px;
+            border-radius: 7px;
+            font-size: 0.7em;
+            font-weight: 700;
+            font-family: 'Courgette', cursive;
+            display: none;
+        }
+
+        #two-restart:hover {
             background-color: burlywood;
             font-size: 0.8em;
 
@@ -261,7 +377,15 @@
     </section>
 
     <!-- main -->
-    <div class="main">
+    <div class="type">
+        <div class="main-border">
+            <input type="button" value="one player" id="one-button">
+            <input type="button" value="two players" id="two-button">
+
+        </div>
+    </div>
+    <!-- one player's section -->
+    <div class="main" style="display: none;">
         <div class="main-border">
             <label for="users-choice">your pick!</label>
 
@@ -270,7 +394,7 @@
                 <option value="paper">paper</option>
                 <option value="scissors">scissors</option>
             </select>
-            <input type="button" value="Start" id="button">
+            <input type="button" value="start" id="button">
             <div class="computer">
                 <label for="computer-choice">Computer's pick!</label>
                 <select name="computer-choice" id="computer-choice">
@@ -278,22 +402,80 @@
                 </select>
             </div>
             <h1 id="result"></h1>
+            <input type="button" value="restart" id="restart">
+
         </div>
     </div>
 
-    <script>
-        //submit button 
-        const button = document.getElementById("button");
-        //random function
-        function randomPick() {
-            let random = Math.floor(Math.random() * Math.floor(3));
-            let arr = ["rock", "paper", "scissors"];
-            let computer = arr[random];
-            document.getElementById("computer-choice-input").innerText = computer;
-            return computer;
+    <!-- two player's section -->
+    <div class="two-players" style="display: none;">
+        <div class="main-border">
+            <label for="first-user">First player's pick!</label>
 
-        }
-        //Game function
+            <select name="first-user" id="first-user">
+                <option value="rock">rock</option>
+                <option value="paper">paper</option>
+                <option value="scissors">scissors</option>
+            </select>
+            <label for="second-user">Second player's pick!</label>
+
+            <select name="second-user" id="second-user">
+                <option value="rock">rock</option>
+                <option value="paper">paper</option>
+                <option value="scissors">scissors</option>
+            </select>
+            <h1 id="two-result"></h1>
+            <input type="two-button" value="start" id="two-submit">
+            <input type="button" value="restart" id="two-restart">
+        </div>
+    </div>
+    <script>
+
+        // event listener for one player button
+        document.getElementById("one-button").addEventListener("click", function (e) {
+            e.preventDefault();
+            document.querySelector(".type").style.display = 'none';
+            document.querySelector(".main").removeAttribute('style');
+        })
+
+        // event listener for two player button
+        document.getElementById("two-button").addEventListener("click", function (e) {
+            e.preventDefault();
+            document.querySelector(".type").style.display = 'none';
+            document.querySelector(".two-players").removeAttribute('style');
+        })
+
+
+        // event listener for the start button of the one players
+        document.getElementById("button").addEventListener("click", function (e) {
+            e.preventDefault();
+            document.querySelector(".computer").style.display = 'block';
+            document.querySelector("#button").style.display = 'none';
+            document.getElementById("result").innerText = randomPlayGame(document.getElementById("users-choice").value, randomPick());
+            document.querySelector("#restart").style.display = 'block';
+        })
+
+        // event listener for the start button of the two players
+        document.getElementById("two-submit").addEventListener("click", function (e) {
+            e.preventDefault();
+            document.querySelector("#two-submit").style.display = 'none';
+            document.getElementById("two-result").innerText = playGame(document.getElementById("first-user").value, document.getElementById("second-user").value);
+            document.querySelector("#two-restart").style.display = 'block';
+        })
+
+        // event listener for the retart button of the one player
+        document.getElementById("restart").addEventListener("click", function (e) {
+            e.preventDefault();
+            window.location.reload();
+        })
+
+        // event listener for the retart button of the two player
+        document.getElementById("two-restart").addEventListener("click", function (e) {
+            e.preventDefault();
+            window.location.reload();
+        })
+
+        //one player function
         function randomPlayGame(user, computer) {
             if (user === computer)
                 return "tie";
@@ -310,14 +492,32 @@
             else if ((user == 'paper') && (computer == 'scissors'))
                 return "you lose :(";
         }
-        console.log(randomPlayGame('rock'))
-        // event listener
-        button.addEventListener("click", function (e) {
-            e.preventDefault();
-            document.querySelector(".computer").style.display = 'block';
-            document.querySelector("#button").style.display = 'none';
-            document.getElementById("result").innerText = randomPlayGame(document.getElementById("users-choice").value, randomPick());
-        })
+
+        //two players function
+        function playGame(user1, user2) {
+            if (user1 == user2)
+                return "tie";
+            else if ((user1 == 'rock') && (user2 == 'paper'))
+                return "first player lose";
+            else if ((user1 == 'paper') && (user2 == 'rock'))
+                return "first player win";
+            else if ((user1 == 'rock') && (user2 == 'scissors'))
+                return "first player win";
+            else if ((user1 == 'scissors') && (user2 == 'rock'))
+                return "first player lose";
+            else if ((user1 == 'scissors') && (user2 == 'paper'))
+                return "first player win";
+            else if ((user1 == 'paper') && (user2 == 'scissors'))
+                return "first player lose";
+        }
+        //random function
+        function randomPick() {
+            let random = Math.floor(Math.random() * Math.floor(3));
+            let arr = ["rock", "paper", "scissors"];
+            let computer = arr[random];
+            document.getElementById("computer-choice-input").innerText = computer;
+            return computer;
+        }
     </script>
 </body>
 
